@@ -86,18 +86,18 @@ public class GUI extends JFrame {
 
         // Prepare Icons
         // Image path relative to the project root (i.e., bin)
-        String imgEmptyFilename = "imagenes/empty.png";
+        String imgEmptyFilename = "Imagenes/empty.png";
         URL imgURL = getClass().getClassLoader().getResource(imgEmptyFilename);
         if (imgURL != null) iconEmpty = new ImageIcon(imgURL);
         else System.err.println("No se pudo encontrar la imagen: " + imgEmptyFilename);
 
-        String imgRedFilename = "imagenes/red.png";
+        String imgRedFilename = "Imagenes/red.png";
         imgURL = getClass().getClassLoader().getResource(imgRedFilename);
         if (imgURL != null) iconRed = new ImageIcon(imgURL);
         else System.err.println("No se pudo encontrar la imagen: " + imgRedFilename);
 
 
-        String imgYellowFilename = "imagenes/yellow.png";
+        String imgYellowFilename = "Imagenes/yellow.png";
         imgURL = getClass().getClassLoader().getResource(imgYellowFilename);
         if (imgURL != null) iconYellow = new ImageIcon(imgURL);
         else System.err.println("No se pudo encontrar la imagen: " + imgYellowFilename);
