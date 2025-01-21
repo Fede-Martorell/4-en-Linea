@@ -1,5 +1,5 @@
 # Proyecto 4 en Linea
----
+
 Les presento mi proyecto final de java, para la materia Laboratorio 2.
 Espero les guste.
 
@@ -9,9 +9,9 @@ Su parte grafica esta manejada por **SWING**.
 
 ## Reglas de Juego
 En el amigable juego de 4 en linea, lo que buscamos es:
-_ Conseguir generar una Linea de 4 fichas del mismo color.
-_ Estas lineas pueden ubicarse: Horizontalmente, Verticalmente y Diagonalmente.
-_ Divertirse y aprender.
+- Conseguir generar una Linea de 4 fichas del mismo color.
+- Estas lineas pueden ubicarse: Horizontalmente, Verticalmente y Diagonalmente.
+- Divertirse y aprender.
 
 **atte. Martorell Federico.**
 *Estudiante Universitario de "Universidad del Aconcagua".*
