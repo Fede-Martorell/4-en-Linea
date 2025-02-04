@@ -37,7 +37,7 @@ public class GUI extends JFrame {
 
     private final String title = "Connect 4 - ";
 
-    private void worldsBestUpdater(JButton button) {
+    private void mapUpdater(JButton button) {
         int row10plusCol = Integer.parseInt(button.getName());
         int col = row10plusCol % 10;
 
@@ -113,7 +113,7 @@ public class GUI extends JFrame {
                 // row * 10 + col
                 button.setName(Integer.toString((row * 10 + col)));
 
-                button.addActionListener(actionEvent -> worldsBestUpdater(((JButton) (actionEvent.getSource()))));
+                button.addActionListener(actionEvent -> mapUpdater(((JButton) (actionEvent.getSource()))));
                 cp.add(button);
             }
         }
