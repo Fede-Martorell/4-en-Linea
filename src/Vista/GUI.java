@@ -1,7 +1,4 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
- */
+
 package Vista;
 
 /**
@@ -38,13 +35,14 @@ public class GUI extends JFrame {
     private final String title = "Connect 4 - ";
 
     private void mapUpdater(JButton button) {
+        // Extrae la columna desde el nombre del botón
         int row10plusCol = Integer.parseInt(button.getName());
         int col = row10plusCol % 10;
 
         boolean player1turn = game.Is1playing();
         if(player1turn) setTitle(title + "Yellow");
         else setTitle(title + "Red");
-
+        //intenta agregar la ficha al tablero, siempre y cuando no este completa la columna
         int addedRow = game.round(col);
 
         if(addedRow != -1) {
@@ -57,12 +55,15 @@ public class GUI extends JFrame {
             if(game.checkForWinnerInGUI(col)) {
                 JOptionPane.showMessageDialog(null, "Has ganado!");
                 JOptionPane.showMessageDialog(null, "Historial."+ historialJuego.leerHistorial());
+                //luego de cada partida el historial se reinicia para cargar nuevos datos
+                //y asi evitar la superposicion de datos de partida.
                 historialJuego.eliminarHistorial();
+                //corroboramos si quieren volver a jugar.
                 int reply = JOptionPane.showConfirmDialog(null, "Quieres jugar nuevamente?", null, JOptionPane.YES_NO_OPTION);
                 if(reply == JOptionPane.YES_OPTION) {
                     System.out.println("Intentando jugar nuevamente...");
                     game.reset(6, 7);
-                    resetBoard();
+                    resetInterface();
                 } else {
                     System.exit(0);
                 }
@@ -72,7 +73,8 @@ public class GUI extends JFrame {
         }
     }
 
-    public void resetBoard() {
+    //maneja la interfaz y la actualizacion de la vista
+    public void resetInterface() {
         for(int row = 0; row < rows; row++)
             for (int col = 0; col < columns; col++)
                 ((JButton)(cp.getComponent(columns * row + col))).setIcon(iconEmpty);
@@ -84,8 +86,8 @@ public class GUI extends JFrame {
         this.rows = rows;
         this.columns = columns;
 
-        // Prepare Icons
-        // Image path relative to the project root (i.e., bin)
+        //carga de imagenes
+        // path de las imagenes.
         String imgEmptyFilename = "Imagenes/empty.png";
         URL imgURL = getClass().getClassLoader().getResource(imgEmptyFilename);
         if (imgURL != null) iconEmpty = new ImageIcon(imgURL);

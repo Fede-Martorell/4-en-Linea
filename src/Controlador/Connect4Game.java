@@ -39,7 +39,7 @@ public class Connect4Game {
 
     public boolean checkForWinnerInGUI(int column) {
         String winningColor;
-
+        //verificamos que jugador esta jugando para determinar quien gano.
         // Invertimos el turno de juego, debido a la informacion tardia.
         if(!is1playing) {
             winningColor = color1;
@@ -58,12 +58,12 @@ public class Connect4Game {
         Piece[][] ourBoard = board.getOurBoard();
 
         for (int winRow = row - 3, winCol = col - (3 * reverser); winRow <= row + 3; winRow++, winCol += reverser) {
-            // Validación de bordes mejorada
+            // Validación de bordes 
             if (winRow < 0 || winRow >= rows || winCol < 0 || winCol >= columns) continue;
 
             // Verifica si la pieza en la posición coincide con el color buscado
             if (ourBoard[winRow][winCol] != null && ourBoard[winRow][winCol].getColor().equals(winningColor)) {
-                winningStreak++; // Sumar en lugar de restar
+                winningStreak++;
                 if (winningStreak == 4) return true; // Se encontró una racha ganadora
             } else {
                 winningStreak = 0; // Reiniciar si se encuentra una pieza diferente o vacía

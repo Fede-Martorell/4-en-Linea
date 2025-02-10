@@ -11,10 +11,6 @@ public class GameLoop {
     private final Connect4Game game; // Objeto que representa la lógica del juego Conecta 4.
     private final GUI ourGUI; // Objeto que representa la interfaz gráfica del juego.
 
-    /**
-     * Constructor de GameLoop.
-     * Inicializa el juego y la interfaz gráfica.
-     */
     public GameLoop() {
         // Crea una nueva instancia del juego Conecta 4 con fichas "R" (rojo) y "Y" (amarillo),
         // y un tablero de 6 filas por 7 columnas.
