@@ -51,27 +51,27 @@ public class Connect4Game {
     }
 
     private boolean checkDiagonal(int row, int col, String winningColor, boolean rightDiagonal) {
-        int winningStreak = 4;
+        int winningStreak = 0;  // Contador comienza en 0
         int reverser = rightDiagonal ? 1 : -1;
         int rows = board.getRows();
         int columns = board.getColumns();
         Piece[][] ourBoard = board.getOurBoard();
 
-        for(int winRow = row - 3, winCol = col - (3 * reverser); winRow <= row + 3; winRow++, winCol += reverser) {
-            if (!rightDiagonal) {
-                if (winRow < 0 || winCol < 0) continue;
-                if (winRow >= rows || winCol >= columns) break;
-            } else {
-                if(winRow < 0 || winCol >= columns) continue;
-                if(winRow >= rows || winCol < 0) break;
-            }
+        for (int winRow = row - 3, winCol = col - (3 * reverser); winRow <= row + 3; winRow++, winCol += reverser) {
+            // Validación de bordes mejorada
+            if (winRow < 0 || winRow >= rows || winCol < 0 || winCol >= columns) continue;
 
-            if(ourBoard[winRow][winCol] != null && ourBoard[winRow][winCol].getColor().equals(winningColor)) {
-                if (--winningStreak == 0) return true;
-            } else winningStreak = 4;
+            // Verifica si la pieza en la posición coincide con el color buscado
+            if (ourBoard[winRow][winCol] != null && ourBoard[winRow][winCol].getColor().equals(winningColor)) {
+                winningStreak++; // Sumar en lugar de restar
+                if (winningStreak == 4) return true; // Se encontró una racha ganadora
+            } else {
+                winningStreak = 0; // Reiniciar si se encuentra una pieza diferente o vacía
+            }
         }
         return false;
     }
+
 
     public boolean checkForWinner(int col, String winningColor) {
         int rows = board.getRows();
